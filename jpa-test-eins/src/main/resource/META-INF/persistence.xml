@@ -42,7 +42,9 @@
             <property name="hibernate.format_sql" value="true" />           
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <!-- update the schema -->
-            <property name="hibernate.hbm2ddl.auto" value="update" />             
+            <property name="hibernate.hbm2ddl.auto" value="update" />   
+			<!-- drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped -->
+            <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /-->			
         </properties>
     </persistence-unit>
 </persistence>
