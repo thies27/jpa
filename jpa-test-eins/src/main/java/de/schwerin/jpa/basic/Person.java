@@ -17,6 +17,8 @@ import javax.persistence.TemporalType;
 
 /**
  * @author Mathias
+ * 
+ * Ausgangspunkt für alle Personen, Kunden etc...
  *
  */
 @Entity(name="person_basic")
