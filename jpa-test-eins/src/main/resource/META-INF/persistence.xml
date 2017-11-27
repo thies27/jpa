@@ -30,6 +30,8 @@
     </persistence-unit>
 	
 	<!-- Hier ist mein Eintrag in Windows -->
+	
+	<!-- Hier ist mein Eintrag in Ubuntu -->
     
     <persistence-unit name="HsqldbPU">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
