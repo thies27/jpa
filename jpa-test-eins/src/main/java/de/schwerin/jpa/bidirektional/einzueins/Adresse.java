@@ -32,6 +32,9 @@ public Adresse() {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	/**
+	 * Strasse
+	 */
 	private String strasse;
 	
 	private String hausNummer;
