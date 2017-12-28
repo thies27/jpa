@@ -15,8 +15,10 @@
             <property name="hibernate.connection.username" value="mathias" />
             <property name="hibernate.connection.password" value="Allwardt99" />
             <property name="hibernate.archive.autodetection" value="class" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />            
-            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />   
+            <!-- Logging von SQL Statements, die von hibernate ausgeführt werden -->         
+            <property name="hibernate.show_sql" value="true" />  
+            <!-- Formatierung der Ausgabe der SQL Statements -->         
             <property name="hibernate.format_sql" value="true" />
             <!-- creates the schema, destroying previous data -->
             <property name="hibernate.hbm2ddl.auto" value="create" />
@@ -27,13 +29,9 @@
              <!-- drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped -->
              <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /-->
         </properties>
-    </persistence-unit>
-	
-	<!-- Hier ist mein Eintrag in Windows -->
-	
-	<!-- Hier ist mein Eintrag in Ubuntu -->
+    </persistence-unit>	
     
-    <persistence-unit name="HsqldbPU">
+    <!--persistence-unit name="HsqldbPU">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>           
             <property name="hibernate.connection.url" value="jdbc:hsqldb:mem:testdb" />
@@ -44,11 +42,7 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect" />            
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />           
-            <property name="hibernate.hbm2ddl.auto" value="update" />
-            <!-- update the schema -->
-            <property name="hibernate.hbm2ddl.auto" value="update" />   
-			<!-- drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped -->
-            <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /-->			
+            <property name="hibernate.hbm2ddl.auto" value="update" /> 					
         </properties>
-    </persistence-unit>
+    </persistence-unit-->
 </persistence>

@@ -70,11 +70,17 @@ public class Person {
 	private Date changeDate;
 	
 	
+	/**
+	 * erzeugt einen Zeitstempel beim ersten Erstellen des Datensatzes
+	 */
 	@PrePersist
 	public void create() {
 	    createDate = new Date();
 	  }
 	
+	/**
+	 * erzeugt einen Zeitstempel beim Ändern des Datensatzes
+	 */
 	@PreUpdate
 	public void update(){
 		changeDate = new Date();

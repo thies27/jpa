@@ -28,6 +28,10 @@ public class TestPerson {
 
 	@Test
 	public void testCreatePerson() throws InterruptedException {
+		
+		logger.debug("starte jpa.bidirektional.einzueins.TestPerson");
+		
+		
 
 		em.getTransaction().begin();
 		Person k = new Person("Regina", "Spaller", createDateFromString("27.09.1963"));
@@ -50,7 +54,7 @@ public class TestPerson {
 		em.getTransaction().commit();
 		
 		Person p = em.find(Person.class, k.getId());
-		System.out.println(p + " " + p.getAdresse());
+		logger.debug(p + " " + p.getAdresse());
 		Assert.assertNotNull(p.getCreateDate());
 		
 //		Thread.sleep(5000);
@@ -72,7 +76,7 @@ public class TestPerson {
 //		em.getTransaction().begin();
 //		em.getTransaction().commit();
 		
-		System.out.println("Ende");
+		logger.debug("Ende");
 
 	}
 	
