@@ -29,9 +29,7 @@ public class TestPerson {
 	@Test
 	public void testCreatePerson() throws InterruptedException {
 		
-		logger.debug("starte jpa.bidirektional.einzueins.TestPerson");
-		
-		
+		logger.debug("starte jpa.bidirektional.einzueins.TestPerson");		
 
 		em.getTransaction().begin();
 		Person k = new Person("Regina", "Spaller", createDateFromString("27.09.1963"));

@@ -8,7 +8,6 @@
 	<name>jpa-test-eins</name>
 	<url>http://maven.apache.org</url>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.testng</groupId>
