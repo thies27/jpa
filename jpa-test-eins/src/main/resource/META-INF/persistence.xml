@@ -12,7 +12,10 @@
             <!--property name="hibernate.connection.url" value="jdbc:mysql://localhost/jpadb" /-->
             <!--property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/jpa_test" /-->
             <property name="hibernate.connection.url" value="jdbc:mysql://192.168.178.53:3306/regina-jpa" />
+            
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <!--property name="hibernate.connection.driver_class">org.h2.Driver</property /-->
+            
             <property name="hibernate.connection.username" value="mathias" />
             <property name="hibernate.connection.password" value="Allwardt99" />
             <property name="hibernate.archive.autodetection" value="class" />
