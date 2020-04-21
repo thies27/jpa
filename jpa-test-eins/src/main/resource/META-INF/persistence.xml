@@ -63,7 +63,7 @@
             <property name="hibernate.connection.url" value="jdbc:mysql://192.168.178.32:3307/jpa_test" />
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.connection.username" value="mathias" />
-            <property name="hibernate.connection.password" value="Allwardt99" />
+            <property name="hibernate.connection.password" value="Allwardt$12" />
             <property name="hibernate.archive.autodetection" value="class" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect" />            
             <property name="hibernate.show_sql" value="true" />
