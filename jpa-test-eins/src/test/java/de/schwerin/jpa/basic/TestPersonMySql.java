@@ -22,7 +22,7 @@ public class TestPersonMySql {
 
 	public TestPersonMySql() {
 		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("EmployeePU");
+				.createEntityManagerFactory("SynologiePU");
 		em = emf.createEntityManager();
 	}
 
@@ -43,8 +43,7 @@ public class TestPersonMySql {
 		
 		Thread.sleep(5000);
 		
-		p.setAdresse("adresse13");
-		
+		p.setAdresse("adresse13");		
 				
 		em.getTransaction().begin();
 		em.getTransaction().commit();

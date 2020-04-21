@@ -15,7 +15,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-
+@Test
 public class TestPersonHSQLDB {
 	
 	final static Logger logger = Logger.getLogger(TestPersonHSQLDB.class);
@@ -23,8 +23,7 @@ public class TestPersonHSQLDB {
 	private EntityManager em;
 
 	public TestPersonHSQLDB() {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("HsqldbPU");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HsqldbPU");
 		em = emf.createEntityManager();
 	}
 
@@ -53,6 +52,7 @@ public class TestPersonHSQLDB {
 		
 		em.getTransaction().begin();
 		Query q = em.createNativeQuery("select * from person_basic", Person.class);
+		
 		List<Person> listPerson = q.getResultList();
 		
 		Assert.assertNotNull(listPerson);
