@@ -1,7 +1,7 @@
 /**
  * 
  */
-package de.schwerin.jpa.bidirektional.einzueins;
+package de.schwerin.jpa.lessons.bidirektional.einzueins;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,6 +26,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity(name="person_bi")
+@Table(schema = "jpa_test")
 public class Person {
 
 	public Person() {

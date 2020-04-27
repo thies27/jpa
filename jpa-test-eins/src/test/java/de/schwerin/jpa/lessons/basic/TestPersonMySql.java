@@ -1,29 +1,30 @@
-package de.schwerin.jpa.basic;
+package de.schwerin.jpa.lessons.basic;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import de.schwerin.jpa.lessons.basic.Person;
 
-@Test
-public class TestPersonHSQLDB {
+
+@Test(enabled = false)
+public class TestPersonMySql {
 	
-	final static Logger logger = Logger.getLogger(TestPersonHSQLDB.class);
+	final static Logger logger = Logger.getLogger(TestPersonMySql.class);
 
 	private EntityManager em;
 
-	public TestPersonHSQLDB() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HsqldbPU");
+	public TestPersonMySql() {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("SynologiePU");
 		em = emf.createEntityManager();
 	}
 
@@ -42,21 +43,26 @@ public class TestPersonHSQLDB {
 		Person p = em.find(Person.class, k.getId());
 		Assert.assertNotNull(p.getCreateDate());
 		
-		//Thread.sleep(5000);
+		Thread.sleep(5000);
 		
-		p.setAdresse("adresse13");
-		
+		p.setAdresse("adresse13");		
 				
 		em.getTransaction().begin();
 		em.getTransaction().commit();
+//		
+//		// ist die gleiche Instanz
+//		logger.debug("k in Persitenzkontext enthalten: " + em.contains(k));
+//		logger.debug("p in Persitenzkontext enthalten: " + em.contains(p));
 		
-		em.getTransaction().begin();
-		Query q = em.createNativeQuery("select * from person_basic", Person.class);
+//		Person f1 = em.find(Person.class, 4);
+//		Assert.assertTrue("Kurth".equals(f1.getLastName()));
+//		f1.setFirstName("Peter");
+//		
+//		em.getTransaction().begin();
+//		em.getTransaction().commit();
 		
-		List<Person> listPerson = q.getResultList();
-		
-		Assert.assertNotNull(listPerson);
-		Assert.assertEquals(listPerson.size(), 2);		
+		System.out.println("Ende");
+
 	}
 	
 	

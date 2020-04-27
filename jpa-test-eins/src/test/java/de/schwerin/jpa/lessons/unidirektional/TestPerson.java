@@ -1,4 +1,4 @@
-package de.schwerin.jpa.bidirektional.einzueins;
+package de.schwerin.jpa.lessons.unidirektional;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,8 +12,10 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import de.schwerin.jpa.lessons.unidirektional.Adresse;
+import de.schwerin.jpa.lessons.unidirektional.Person;
 
-
+@Test(enabled = false)
 public class TestPerson {
 	
 	final static Logger logger = Logger.getLogger(TestPerson.class);
@@ -28,8 +30,6 @@ public class TestPerson {
 
 	@Test
 	public void testCreatePerson() throws InterruptedException {
-		
-		logger.debug("starte jpa.bidirektional.einzueins.TestPerson");		
 
 		em.getTransaction().begin();
 		Person k = new Person("Regina", "Spaller", createDateFromString("27.09.1963"));
@@ -39,20 +39,18 @@ public class TestPerson {
 		Adresse adr2 = new Adresse("Str der DSF", "25", "14513", "Teltow");
 		
 		k.setAdresse(adr1);
-		adr1.setPerson(k);
 		k1.setAdresse(adr2);
-		adr2.setPerson(k1);
 
 		em.persist(k);
 		em.persist(k1);
 		
-		em.persist(adr1);		
-		em.persist(adr2);
+//		em.persist(adr1);		
+//		em.persist(adr2);
 
 		em.getTransaction().commit();
 		
 		Person p = em.find(Person.class, k.getId());
-		logger.debug(p + " " + p.getAdresse());
+		System.out.println(p + " " + p.getAdresse());
 		Assert.assertNotNull(p.getCreateDate());
 		
 //		Thread.sleep(5000);
@@ -74,7 +72,7 @@ public class TestPerson {
 //		em.getTransaction().begin();
 //		em.getTransaction().commit();
 		
-		logger.debug("Ende");
+		System.out.println("Ende");
 
 	}
 	

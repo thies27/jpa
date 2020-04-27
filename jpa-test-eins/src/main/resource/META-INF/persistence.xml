@@ -23,7 +23,7 @@
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <!-- creates the schema, destroying previous data -->
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <!-- update the schema -->
              <!--property name="hibernate.hbm2ddl.auto" value="update" /-->
              <!-- validate the schema, makes no changes to the database -->
@@ -51,9 +51,7 @@
         </properties>
     </persistence-unit>
 		
-        
-    
-    
+       
     <!-- MariaDB -->
     <persistence-unit name="SynologiePU">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
@@ -66,15 +64,29 @@
             <property name="hibernate.archive.autodetection" value="class" />
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect" />            
             <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-            <!-- creates the schema, destroying previous data -->
-            <property name="hibernate.hbm2ddl.auto" value="create-drop" />
-            <!-- update the schema -->
-             <!--property name="hibernate.hbm2ddl.auto" value="update" /-->
-             <!-- validate the schema, makes no changes to the database -->
-             <!--property name="hibernate.hbm2ddl.auto" value="validate" /-->
-             <!-- drop the schema when the SessionFactory is closed explicitly, typically when the application is stopped -->
-             <!--property name="hibernate.hbm2ddl.auto" value="create-drop" /-->
+            <property name="hibernate.format_sql" value="true" />            
+            <property name="hibernate.hbm2ddl.auto" value="update" />            
+        </properties>
+    </persistence-unit>
+    
+    
+    
+    <!-- DB integration -->
+    <persistence-unit name="IntegrationPU" >
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>        
+        <class>de.schwerin.jpa.integration.TestCasesErrors</class>
+        <class>de.schwerin.jpa.integration.TestCases</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/integration?useSSL=false" />
+            <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.connection.username" value="mathias" />
+            <property name="hibernate.connection.password" value="Allwardt99" />
+            <property name="hibernate.archive.autodetection" value="class" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect" />            
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />            
+            <property name="hibernate.hbm2ddl.auto" value="create-drop" />            
         </properties>
     </persistence-unit>
 

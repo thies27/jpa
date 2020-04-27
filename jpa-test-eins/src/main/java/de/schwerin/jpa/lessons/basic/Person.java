@@ -1,41 +1,42 @@
 /**
  * 
  */
-package de.schwerin.jpa.unidirektional;
+package de.schwerin.jpa.lessons.basic;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
  * @author Mathias
+ * 
+ * Ausgangspunkt fuer alle Personen, Kunden etc...
  *
  */
-@Entity(name="person_uni")
+@Entity(name="person_basic")
+@Table(schema = "jpa_test")
 public class Person {
 
 	public Person() {
 
 	}
 
-	public Person(String firstName, String lastName, Date geburtstag) {
+	public Person(String firstName, String lastName, Date geburtstag,
+			String adresse) {
 
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 		this.setGeburtstag(geburtstag);
-			
+		this.setAdresse(adresse);		
 	}
 
 	@Id
@@ -43,37 +44,41 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "vorname")
+	@Column(name = "Vorname")
 	private String firstName;
 
-	@Column(name = "nachname")
+	@Column(name = "Nachname")
 	private String lastName;
 
-	@Column(name = "geburtstag")
+	@Column(name = "Geburtstag")
 	@Temporal(TemporalType.DATE)
 	private Date geburtstag;
 
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="fk_adresse")//Name der Spalte
-	private Adresse adresse;
+	@Column(name="adresse")
+	private String adresse;
 
 	
-	@Column(name = "erstellt", updatable = false)
+	@Column(name = "Eingefügt", updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
 	
-	@Column(name = "aktualisiert")
+	@Column(name = "Geändert")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date changeDate;
 	
-	
+	/**
+	 * erzeugt einen Zeitstempel beim ersten Erstellen des Datensatzes
+	 */
 	@PrePersist
 	public void create() {
 	    createDate = new Date();
 	  }
 	
+	/**
+	 * erzeugt einen Zeitstempel beim Ändern des Datensatzes
+	 */
 	@PreUpdate
 	public void update(){
 		changeDate = new Date();
@@ -123,20 +128,13 @@ public class Person {
 		this.changeDate = changeDate;
 	}
 
-	public Adresse getAdresse() {
+	public String getAdresse() {
 		return adresse;
 	}
 
-	public void setAdresse(Adresse adresse) {
+	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
 
-	public String toString(){
-		
-		SimpleDateFormat sdf = new  SimpleDateFormat("dd.MM.yyyy");
-		String strGeburtstag = sdf.format(geburtstag);
-		
-		return firstName + " " + lastName + " " + strGeburtstag;
-	}
-
+	
 }

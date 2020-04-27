@@ -1,4 +1,4 @@
-package de.schwerin.jpa.bidirektional.einzueins;
+package de.schwerin.jpa.lessons.bidirektional.einzueins;
 
 import java.util.Date;
 
@@ -9,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name="adresse_bi")
+@Table(schema = "jpa_test")
 public class Adresse {
 	
 public Adresse() {

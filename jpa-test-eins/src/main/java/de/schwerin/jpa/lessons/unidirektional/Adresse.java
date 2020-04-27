@@ -1,11 +1,13 @@
-package de.schwerin.jpa.unidirektional;
+package de.schwerin.jpa.lessons.unidirektional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity(name="adresse_uni")
+@Table(catalog = "jpa_test")
 public class Adresse {	
 	
 	public Adresse() {

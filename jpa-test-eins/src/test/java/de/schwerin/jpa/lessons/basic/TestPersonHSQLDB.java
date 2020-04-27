@@ -1,28 +1,31 @@
-package de.schwerin.jpa.basic;
+package de.schwerin.jpa.lessons.basic;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import de.schwerin.jpa.lessons.basic.Person;
 
 
-public class TestPersonMySql {
+@Test(enabled = false)
+public class TestPersonHSQLDB {
 	
-	final static Logger logger = Logger.getLogger(TestPersonMySql.class);
+	final static Logger logger = Logger.getLogger(TestPersonHSQLDB.class);
 
 	private EntityManager em;
 
-	public TestPersonMySql() {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("SynologiePU");
+	public TestPersonHSQLDB() {
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("HsqldbPU");
 		em = emf.createEntityManager();
 	}
 
@@ -41,26 +44,21 @@ public class TestPersonMySql {
 		Person p = em.find(Person.class, k.getId());
 		Assert.assertNotNull(p.getCreateDate());
 		
-		Thread.sleep(5000);
+		//Thread.sleep(5000);
 		
-		p.setAdresse("adresse13");		
+		p.setAdresse("adresse13");
+		
 				
 		em.getTransaction().begin();
 		em.getTransaction().commit();
-//		
-//		// ist die gleiche Instanz
-//		logger.debug("k in Persitenzkontext enthalten: " + em.contains(k));
-//		logger.debug("p in Persitenzkontext enthalten: " + em.contains(p));
 		
-//		Person f1 = em.find(Person.class, 4);
-//		Assert.assertTrue("Kurth".equals(f1.getLastName()));
-//		f1.setFirstName("Peter");
-//		
-//		em.getTransaction().begin();
-//		em.getTransaction().commit();
+		em.getTransaction().begin();
+		Query q = em.createNativeQuery("select * from person_basic", Person.class);
 		
-		System.out.println("Ende");
-
+		List<Person> listPerson = q.getResultList();
+		
+		Assert.assertNotNull(listPerson);
+		Assert.assertEquals(listPerson.size(), 2);		
 	}
 	
 	
