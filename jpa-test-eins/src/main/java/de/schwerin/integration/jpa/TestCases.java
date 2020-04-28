@@ -1,11 +1,10 @@
-package de.schwerin.jpa.integration;
+package de.schwerin.integration.jpa;
 
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,12 +13,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.Cascade;
-
 @Entity(name = "dld_testcases")
 @Table(schema = "integration", uniqueConstraints=@UniqueConstraint(columnNames = {"GRUPPE", "KLASSE", "METHODE"}))
 public class TestCases {
 	
+	public TestCases() {
+		super();
+		
+	}
+
 	public TestCases(String gruppe, String klasse, String methode) {
 		super();
 		this.gruppe = gruppe;
