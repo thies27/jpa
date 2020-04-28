@@ -1,51 +1,26 @@
 package de.schwerin.integration.dao;
 
-import java.io.Serializable;
+import java.util.HashMap;
+import java.util.HashSet;
 
-public class IntegrationDao implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -5986001574169344973L;
+public class IntegrationDao {
 	
 	
-	private String gruppe;
 
+	public IntegrationDao() {
+		testFälle = new HashSet<HashMap<String,String>>();
+	}
+
+	private HashSet<HashMap<String, String>> testFälle;
+
+	public HashSet<HashMap<String, String>> getTestFälle() {
+		return testFälle;
+	}
+
+	public void setTestFälle(HashSet<HashMap<String, String>> testFälle) {
+		this.testFälle = testFälle;
+	}	
 	
-	private String klasse;
 	
-	
-	private String methode;
-
-
-	public String getGruppe() {
-		return gruppe;
-	}
-
-
-	public void setGruppe(String gruppe) {
-		this.gruppe = gruppe;
-	}
-
-
-	public String getKlasse() {
-		return klasse;
-	}
-
-
-	public void setKlasse(String klasse) {
-		this.klasse = klasse;
-	}
-
-
-	public String getMethode() {
-		return methode;
-	}
-
-
-	public void setMethode(String methode) {
-		this.methode = methode;
-	}
 
 }
