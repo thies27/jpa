@@ -1,23 +1,21 @@
 package de.schwerin.integration.dao;
 
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
-public class IntegrationDao {
-	
-	
+public class IntegrationDao {	
 
 	public IntegrationDao() {
-		testFälle = new HashSet<HashMap<String,String>>();
+		testFälle = new HashSet<Map<String,String>>();
 	}
 
-	private HashSet<HashMap<String, String>> testFälle;
+	private HashSet<Map<String, String>> testFälle;
 
-	public HashSet<HashMap<String, String>> getTestFälle() {
+	public HashSet<Map<String, String>> getTestFälle() {
 		return testFälle;
 	}
 
-	public void setTestFälle(HashSet<HashMap<String, String>> testFälle) {
+	public void setTestFälle(HashSet<Map<String, String>> testFälle) {
 		this.testFälle = testFälle;
 	}	
 	

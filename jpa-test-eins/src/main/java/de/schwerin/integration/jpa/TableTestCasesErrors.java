@@ -14,13 +14,13 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "dld_testcases_errors", schema = "integration")
-public class TestCasesErrors {
+public class TableTestCasesErrors {
 	
-	public TestCasesErrors() {
+	public TableTestCasesErrors() {
 		super();
 	}
 	
-	public TestCasesErrors(int testCaseId) {
+	public TableTestCasesErrors(int testCaseId) {
 		super();
 		this.testCaseId = testCaseId;
 	}

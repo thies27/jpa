@@ -9,25 +9,32 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity(name = "dld_testcases")
 @Table(schema = "integration", uniqueConstraints=@UniqueConstraint(columnNames = {"GRUPPE", "KLASSE", "METHODE"}))
-public class TestCases {
+@NamedQueries({@NamedQuery(name="TableTestCases.FindIdByGroup", query="select tc from TableTestCases tc "
+		+ "where gruppe = :gruppe and klasse = :klasse and methode = :methode")})
+
+public class TableTestCases {
 	
-	public TestCases() {
+	public TableTestCases() {
 		super();
 		
 	}
 
-	public TestCases(String gruppe, String klasse, String methode) {
+	public TableTestCases(String gruppe, String klasse, String methode) {
 		super();
 		this.gruppe = gruppe;
 		this.klasse = klasse;
 		this.methode = methode;
 	}
+	
+	
 
 	@Id
 	@Column(name = "ID")	
@@ -45,7 +52,7 @@ public class TestCases {
 	
 	@OneToMany(cascade = CascadeType.ALL)	
 	@JoinColumn(name = "testCaseId")
-	private Set<TestCasesErrors> errors;
+	private Set<TableTestCasesErrors> errors;
 	
 	public String getGruppe() {
 		return gruppe;
