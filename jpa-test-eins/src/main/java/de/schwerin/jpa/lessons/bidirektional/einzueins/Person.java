@@ -26,7 +26,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity(name="person_bi")
-@Table(schema = "jpa_test")
+@Table(catalog = "jpa_test")
 public class Person {
 
 	public Person() {

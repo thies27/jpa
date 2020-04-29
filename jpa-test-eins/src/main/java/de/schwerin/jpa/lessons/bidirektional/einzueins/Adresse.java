@@ -14,7 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity(name="adresse_bi")
-@Table(schema = "jpa_test")
+@Table(catalog = "jpa_test")
 public class Adresse {
 	
 public Adresse() {

@@ -15,11 +15,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-@Entity(name = "dld_testcases")
-@Table(schema = "integration", uniqueConstraints=@UniqueConstraint(columnNames = {"GRUPPE", "KLASSE", "METHODE"}))
+@Entity
+@Table(name = "dld_testcases", schema = "integration", uniqueConstraints=@UniqueConstraint(columnNames = {"GRUPPE", "KLASSE", "METHODE"}))
 @NamedQueries({@NamedQuery(name="TableTestCases.FindIdByGroup", query="select tc from TableTestCases tc "
 		+ "where gruppe = :gruppe and klasse = :klasse and methode = :methode")})
-
 public class TableTestCases {
 	
 	public TableTestCases() {

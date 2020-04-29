@@ -19,21 +19,20 @@ public class TestIntegration {
 
 	final static Logger logger = Logger.getLogger(TestIntegration.class);
 
-	private EntityManager em;
+	private EntityManager em;	
 	
-	String path = "/home/mathias/temp/testcases.txt";
 	
 	@Test
 	public void testPersistenzHandler() {
-		
+				
 		DldTestCasesPersistenzHandler h = new DldTestCasesPersistenzHandler();
-		h.persist(path);
+		h.existInDatabase(getPathToTestCasesFile());
 	}
 	
 	@Test
 	public void testDataReader() {		
 		
-		DataReader dr = new FileDataReader(path);
+		DataReader dr = new FileDataReader(getPathToTestCasesFile());
 		
 		IntegrationDao dao = dr.readData(new IntegrationDao());
 		
@@ -63,5 +62,15 @@ public class TestIntegration {
 
 		Assert.assertNotNull(e2.getExecuteDate(), "Das Datum darf nicht leer sein.  ");
 
+	}
+	
+	
+	private String getPathToTestCasesFile() {		
+		
+		if("Windows 10".equalsIgnoreCase(System.getProperty("os.name"))) {
+			return "D:/tmp/testcases.txt";
+		} else {
+			return "/home/mathias/temp/testcases.txt";
+		}
 	}
 }
